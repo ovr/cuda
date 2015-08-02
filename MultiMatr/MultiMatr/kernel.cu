@@ -8,6 +8,7 @@
 #include "kernel.h"
 
 
+
 __global__ void multMatrix(float *a, float *b, float *c, size_t N)
 {
 	int row = blockIdx.y * blockDim.y + threadIdx.y;
@@ -23,6 +24,7 @@ __global__ void multMatrix(float *a, float *b, float *c, size_t N)
 		}
 	}
 	c[row * N + col] = tmpSum;
+
 }
 
 
