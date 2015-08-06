@@ -6,6 +6,7 @@
 #include <iostream>
 #include <cmath>
 #include <iomanip>
+#include <ctime>
 
 #include "kernel.h"
 #include "cpu.h"
@@ -68,6 +69,8 @@ void getInfoGPU()
 
 int main()
 {
+	srand(time(NULL));
+
 	const size_t N = 2048;
 	const size_t size = N * N;
 
@@ -91,7 +94,9 @@ int main()
 		{
 			hA[i * N + j] = std::sinf(i + 1.f);
 			hB[i * N + j] = std::sinf(i + 1.f);
+			//std::cout << hB[i * N + j] << " ";
 		}
+		//std::cout << "\n";
 	}
 	std::cout << "OK" << "\n";
 
@@ -144,7 +149,6 @@ int main()
 
 	cudaEventDestroy(start);
 	cudaEventDestroy(stop);
-
 
 	cudaFree(&dA);
 	cudaFree(&dB);
