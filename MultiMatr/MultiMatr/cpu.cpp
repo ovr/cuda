@@ -6,7 +6,8 @@ void multMatrixCPU(float *a, float *b, float *c, size_t N)
 {
 	// Transpose array B
 	//std::cout << "\n";
-	float *transB = (float*)malloc(N * N * sizeof(float));
+	float *transB = new float*[N*N];
+	
 	for (size_t i = 0; i < N; i++)
 	{
 		for (size_t j = 0; j < N; j++)
